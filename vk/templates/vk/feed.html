@@ -1,0 +1,30 @@
+{% extends 'vk/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'vk/css/feed.css' %}">
+<title>News</title>
+{% endblock head %}
+
+{% block content %}
+    {% for post in  posts  %}
+    <div class="news-block">
+        <div class="news-top-bar">
+            <img class="news-ava" src="{{post.user.avatar.url}}" alt="">
+            <div class="news-info">
+                <a href="{% url 'profile' username=post.user.username %}">{{post.user.firstname}} {{post.user.lastname}}</a>
+                <span>{{post.date}}</span>
+            </div>
+        </div>
+        <div class="news-description">
+            <span>
+                {{post.description}}
+            </span>
+        </div>
+        <div class="news-media">
+            <img src="{{post.media.url}}" alt="">
+        </div>
+    </div>  
+    {% endfor %}  
+
+    <div style="height: 10vh;"></div>
+{% endblock content %}

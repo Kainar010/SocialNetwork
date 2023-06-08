@@ -1,0 +1,14 @@
+{% extends 'vk/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'vk/css/allusers.css' %}">
+{% endblock head %}
+
+{% block content %}
+    {% for user in users %}
+    <div class="user-block">
+        <img src="{{user.avatar.url}}" alt="">
+        <a href="{% url 'profile' username=user.username %}">{{user.firstname}} {{user.lastname}}</a>
+    </div>
+    {% endfor %}
+{% endblock content %}

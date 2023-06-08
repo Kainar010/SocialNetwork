@@ -1,0 +1,52 @@
+{% extends 'vk/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'vk/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'vk/css/feed.css' %}">
+<title>{{user.firstname}} {{user.lastname}}</title>
+{% endblock head %}
+
+{% block content %} 
+    <div class="user-block">
+        <img class="profile-ava" src="{{profile_user.avatar.url}}" alt="">
+        <div class="user-block-bottom">
+            <h2>{{profile_user.lastname}} {{profile_user.firstname}}</h2>
+            {% if is_self %}
+            <a class="create-post" href="{% url 'newpost' %}">Create post</a>
+            {% else %}
+                {% if is_friend %}
+                <a class="create-post" href="{% url 'fr_ctrl' username=profile_user.username method='delete' %}">Remove friend</a>
+                {% else %}
+                    {% if is_send %}
+                    <a class="create-post" href="">Request sended</a>
+                    {% else %}
+                    <a class="create-post" href="{% url 'addfriend' username=profile_user.username %}">Add to friends</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% for post in posts %}
+    <div class="news-block">
+        <div class="news-top-bar">
+            <img class="news-ava" src="{{post.user.avatar.url}}" alt="">
+            <div class="news-info">
+                <a href="{% url 'profile' username=post.user.username %}">
+                    {{post.user.firstname}} {{post.user.lastname}}
+                </a>
+                <span>{{post.date}}</span>
+            </div>
+        </div>
+        <div class="news-description">
+            <span>
+                {{post.description}}
+            </span>
+        </div>
+        <div class="news-media">
+            <img src="{{post.media.url}}" alt="">
+        </div>
+    </div>
+    {% endfor %}
+    <div style="height: 10vh;"></div>
+    {% endblock content %}

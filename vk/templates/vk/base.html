@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'vk/css/base.css' %}">
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+    <div class="top-bar">
+
+    </div>
+    <div class="main">
+        <div class="nav-bar-block">
+            <div class="nav-bar">
+                <div class="user-bar">
+                    <img class="avatar" src="{{user.avatar.url}}" alt="">
+                    <a class="user-fullname" href="{% url 'profile' username=user.username %}">
+                        {{user.lastname}} {{user.firstname}} 
+                    </a>
+                </div>
+                <a class="section-bar" href="{% url 'feed' %}">
+                    <span>News</span>
+                </a>
+                <a class="section-bar">
+                    <span>Messages</span>
+                </a>
+                <a class="section-bar" href="{% url 'friends' %}">
+                    <span>Friends</span>
+                </a>
+                <a class="section-bar" href="{% url 'allusers' %}">
+                    <span>All users</span>
+                </a>
+                <a class="section-bar" href="{% url 'signout' %}">
+                    Sign out
+                </a>
+            </div>
+        </div>
+        <div class="content-block">
+            <div class="slide">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

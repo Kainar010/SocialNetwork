@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'vk/css/login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main">
+        <div class="login-block">
+            <div class="login-title">
+                Login to VK
+            </div>
+            <form class="login-form" action="" method="post">
+                {% csrf_token %}
+                {{login_form}}
+                <p class="button-block">
+                    <button type="submit">Login</button>
+                    <a href="{% url 'register' %}">or register now!</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

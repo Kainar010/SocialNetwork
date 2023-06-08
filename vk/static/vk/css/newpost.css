@@ -1,0 +1,61 @@
+.new-post-block {
+    width: 100%;
+    height: 30vh;
+    background-color: white;
+    border: 1px #e1e3e6 solid;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description {
+    width: 90%;
+    height: 60%;
+    border: none;
+}
+
+.new-post-bottom-block {
+    width: 90%;
+    height: 15%;
+    border-top: 1px #e1e3e6 solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.new-post-bottom-block button {
+    width: 10%;
+    height: 80%;
+    background-color: #2688eb;
+    color: white;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.upload-block {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.upload-img {
+    width: 25%;
+    height: 80%;
+    border: none;
+    background-image: url(../image/image.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: transparent;
+    overflow: hidden;
+}
+
+.upload-img input {
+    overflow: hidden;
+    width: 0;
+}
+

@@ -1,0 +1,40 @@
+{% extends 'vk/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'vk/css/friends.css' %}">
+<link rel="stylesheet" href="{% static 'vk/css/allusers.css' %}">
+<title>Friends</title>
+{% endblock head %}
+
+{% block content %}
+    <div class="friends-block">
+        <div class="request-block">
+            {% for request in requests  %}
+            <div class="request">
+                <img class="request-avatar" src="{{request.request_sender.avatar.url}}" alt="">
+                <div class="request-info">
+                    {{request.request_sender.firstname}} {{request.request_sender.lastname}}
+                    <div class="request-button-block">
+                        <a class="request-add" href="{% url 'fr_ctrl' username=request.request_sender.username method='accept' %}">Add</a>
+                        <a class="request-decline" href="{% url 'fr_ctrl' username=request.request_sender.username method='decline' %}">Decline</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% for f in friends1 %}
+        <div class="user-block">
+            <img src="{{f.user1.avatar.url}}" alt="">
+            <a href="{% url 'profile' username=f.user1.username %}">{{f.user1.firstname}} {{f.user1.lastname}}</a>
+        </div>
+        {% endfor %}
+
+        {% for f in friends2 %}
+        <div class="user-block">
+            <img src="{{f.user2.avatar.url}}" alt="">
+            <a href="{% url 'profile' username=f.user2.username %}">{{f.user2.firstname}} {{f.user2.lastname}}</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

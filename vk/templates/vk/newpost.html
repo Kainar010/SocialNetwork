@@ -1,0 +1,22 @@
+{% extends 'vk/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'vk/css/newpost.css' %}">
+<title>Create new post</title>
+{% endblock head %}
+
+{% block content %}
+    <form class="new-post-block" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea class="description" name="description"  cols="50" rows="5" placeholder="Enter post description"></textarea>
+        <div class="new-post-bottom-block">
+            <div class="upload-block">
+                <label class="upload-img" for="upload-img">
+                    <input id="upload-img" name="image" type="file" accept="image/*">
+                </label>
+            </div>
+            <button type="submit">Post</button>
+        </div>
+    </form>
+{% endblock content %}
+
